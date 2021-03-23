@@ -1,6 +1,8 @@
 import { Button, Col, Form, Modal } from "react-bootstrap";
 import { useState } from "react";
 
+
+
 export default ({ onInputChange, addPost, show, handleClose }) => {
   const [validate, setValidate] = useState(false);
 
