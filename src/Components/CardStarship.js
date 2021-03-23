@@ -1,56 +1,64 @@
 import axios from "axios";
 import { useState } from "react";
-import { Col, Card, Button } from "react-bootstrap";
+import { Card, Button, Container } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { fetchAllShips } from "../Store/actions";
 import SimpleCardDetail from "./SimpleCardDetail";
 
-const CardStarship = ({ starships, fetchAll }) => {
+const CardStarship = ({ starship }) => {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
+  const handleClose = () => setOpen(false);
+  const handleShow = () => setOpen(true);
 
-  const deleteStarship = async (id) => {
+  const deleteStarship = async () => {
     try {
-      const res = await axios.delete(`http://localhost:5000/starships/${id}`);
-      if (res.status !== 200) throw new Error("Delete Failed")
-      fetchAll();
-    } catch (err) {
-      alert(err);
+      const res = await axios.delete(
+        `http://localhost:5000/starships/${starship.id}`
+      );
+      if (res.status !== 200) {
+        throw new Error("Delete Failed");
+      }
+      dispatch(fetchAllShips());
+    } catch (e) {
+      alert(e);
     }
   };
 
-  return starships.map((starship) => (
-    <Col md={3} key={starship.id}>
-      <Card className="m-5" style={{ width: "15rem", height: 410 }}>
-        <Card.Header as="h5">{starship.name}</Card.Header>
-        <Card.Img
-          style={{ height: 150, objectFit: "cover" }}
-          src={starship.image}
-        />
-        <Card.Body>
-          <Card.Title>{starship.model}</Card.Title>
-          <Card.Text>{starship.manufacturer}</Card.Text>
-        </Card.Body>
+  return (
+    <Card style={{ height: 420 }}>
+      <Card.Header as="h5">{starship.name}</Card.Header>
+      <Card.Img
+        style={{ height: 150, objectFit: "cover" }}
+        src={starship.image}
+        alt={starship.name}
+      />
+      <Card.Body>
+        <Card.Title>{starship.model}</Card.Title>
+        <Card.Text>{starship.manufacturer}</Card.Text>
+      </Card.Body>
+      <Container className="d-flex justify-content-around my-3">
+        <Button variant="primary" onClick={handleShow}>
+          Details
+        </Button>
+        <Button variant="secondary" onClick={deleteStarship}>
+          Delete
+        </Button>
+      </Container>
 
-        <Card.Footer
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-          }}
-        >
-          <Button onClick={() => setOpen(true)} variant="primary">
-            Details
-          </Button>
-          <Button onClick={() => deleteStarship(starship.id)} variant="danger">
-            Delete
-          </Button>
-        </Card.Footer>
-        <SimpleCardDetail
-          show={open}
-          handleClose={() => setOpen(false)}
-          starship={starship}
-        />
-      </Card>
-    </Col>
-  ));
+      <Card.Footer>
+        <small className="text-muted">
+          Credits : {starship.cost_in_credits}
+        </small>
+      </Card.Footer>
+
+      <SimpleCardDetail
+        starship={starship}
+        show={open}
+        handleClose={handleClose}
+      />
+    </Card>
+  );
 };
 
 export default CardStarship;

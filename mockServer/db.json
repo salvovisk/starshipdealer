@@ -134,37 +134,6 @@
       "url": "http://swapi.dev/api/starships/11/"
     },
     {
-      "id": 6,
-      "name": "X-wing",
-      "model": "T-65 X-wing",
-      "manufacturer": "Incom Corporation",
-      "cost_in_credits": "149999",
-      "length": "12.5",
-      "max_atmosphering_speed": "1050",
-      "crew": "1",
-      "passengers": "0",
-      "cargo_capacity": "110",
-      "consumables": "1 week",
-      "hyperdrive_rating": "1.0",
-      "MGLT": "100",
-      "starship_class": "Starfighter",
-      "image": "https://www.sideshow.com/storage/product-images/903314/x-wing-starfighter_star-wars_square.jpg",
-      "pilots": [
-        "http://swapi.dev/api/people/1/",
-        "http://swapi.dev/api/people/9/",
-        "http://swapi.dev/api/people/18/",
-        "http://swapi.dev/api/people/19/"
-      ],
-      "films": [
-        "http://swapi.dev/api/films/1/",
-        "http://swapi.dev/api/films/2/",
-        "http://swapi.dev/api/films/3/"
-      ],
-      "created": "2014-12-12T11:19:05.340000Z",
-      "edited": "2014-12-20T21:23:49.886000Z",
-      "url": "http://swapi.dev/api/starships/12/"
-    },
-    {
       "id": 7,
       "name": "TIE Advanced x1",
       "model": "Twin Ion Engine Advanced x1",
@@ -214,9 +183,18 @@
       "created": "2014-12-15T12:31:42.547000Z",
       "edited": "2014-12-20T21:23:49.893000Z",
       "url": "http://swapi.dev/api/starships/15/"
+    },
+    {
+      "name": "Falcon x",
+      "manufacturer": "Space X",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71xmlfDPaXL._AC_SX522_.jpg",
+      "crew": "15",
+      "passengers": "15",
+      "cargo_capacity": "150",
+      "id": 9
     }
   ],
-  "test" : {
+  "test": {
     "prova": "prova"
   }
 }

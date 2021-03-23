@@ -1,0 +1,12 @@
+.header {
+  text-align: center;
+  padding-top: 25px;
+}
+
+.header > p {
+  font-family: "Days One", sans-serif;
+  color: rgb(255, 247, 0);
+  font-size: 3rem;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: black;
+}
