@@ -183,15 +183,6 @@
       "created": "2014-12-15T12:31:42.547000Z",
       "edited": "2014-12-20T21:23:49.893000Z",
       "url": "http://swapi.dev/api/starships/15/"
-    },
-    {
-      "name": "Falcon x",
-      "manufacturer": "Space X",
-      "image": "https://images-na.ssl-images-amazon.com/images/I/71xmlfDPaXL._AC_SX522_.jpg",
-      "crew": "15",
-      "passengers": "15",
-      "cargo_capacity": "150",
-      "id": 9
     }
   ],
   "test": {

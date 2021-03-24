@@ -17,7 +17,7 @@ const defaultState = {
   loading: false,
 };
 
-export default (state = defaultState, action) => {
+const starShipReducer = (state = defaultState, action) => {
   switch (action.type) {
     case FETCH_ALL_STARSHIPS_REQUEST:
       return {
@@ -37,12 +37,6 @@ export default (state = defaultState, action) => {
         ...state,
         loading: false,
         error: action.payload,
-      };
-
-    case ADD_STARSHIP_REQUEST:
-      return {
-        ...state,
-        loading: true,
       };
 
     case ADD_STARSHIP_REQUEST:
@@ -95,3 +89,5 @@ export default (state = defaultState, action) => {
       return state;
   }
 };
+
+export default starShipReducer;
