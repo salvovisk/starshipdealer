@@ -7,8 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { addShip, fetchAllShips } from "./Store/actions";
 
 import Main from "./Containers/Main";
+import NavbarComponent from "./Components/NavbarComponent";
 import Header from "./Components/Header";
 import CardStarship from "./Components/CardStarship";
+import LogForm from "./Components/LogForm";
 import StarshipForm from "./Components/StarshipForm";
 import Loader from "./Components/Loader";
 import Message from "./Components/Message";
@@ -17,20 +19,37 @@ import "./App.css";
 axios.defaults.headers.post["Content.type"] = "application/json";
 
 function App() {
+  const [newStarship, setNewStarship] = useState({});
+  const dispatch = useDispatch();
+  const starshipsState = useSelector((state) => state.starships);
+  const { loading, error, starships } = starshipsState;
+  const userState = useSelector((state) => state.user);
+  const { name, isLogged } = userState;
+
+  // New Ship Modal
   const [showFormModal, setShowFormModal] = useState(false);
 
-  const [newStarship, setNewStarship] = useState({});
+  const handleFormModalClose = () => {
+    setShowFormModal(false);
+    setNewStarship({});
+  };
 
-  const dispatch = useDispatch();
-  const starshipsState = useSelector((state) => state);
-  const { loading, error, starships } = starshipsState;
+  const handleFormModalShow = () => {
+    setShowFormModal(true);
+  };
+  // ----------------------------------------
 
-  // const getAllStarships = async () => {
-  //   const { data: starships } = await axios.get(
-  //     "http://localhost:5000/starships"
-  //   );
-  //   setStarships(starships);
-  // };
+  // LoginModal
+  const [showLogModal, setShowLogModal] = useState(false);
+
+  const handleLogModalClose = () => {
+    setShowLogModal(false);
+  };
+
+  const handleLogModalShow = () => {
+    setShowLogModal(true);
+  };
+  // ------------------------------------------
 
   useEffect(() => {
     dispatch(fetchAllShips());
@@ -43,15 +62,7 @@ function App() {
     }));
   };
 
-  const handleClose = () => {
-    setShowFormModal(false);
-    setNewStarship({});
-  };
-
-  const handleShow = () => {
-    setShowFormModal(true);
-  };
-
+  // Form Validation for new ships
   const checkform = () =>
     newStarship.name &&
     newStarship.manufacturer &&
@@ -60,18 +71,20 @@ function App() {
     newStarship.passengers >= 0 &&
     newStarship.cargo_capacity >= 0;
 
+  // adding new ships after Form Validation
   const addNewStarship = async (e) => {
     e.preventDefault();
     if (checkform()) {
       dispatch(addShip(newStarship));
-      dispatch(fetchAllShips());
     } else {
       throw new Error("Form not valid");
     }
   };
+  // ----------------------------------------
 
   return (
     <div className="App">
+      <NavbarComponent/>
       <Header />
       {error && <Message variant="warning" msg={error} />}
       {loading ? (
@@ -85,9 +98,10 @@ function App() {
           ))}
         </Main>
       )}
+      <LogForm show={showLogModal} handleClose={handleLogModalClose} />
       <StarshipForm
         show={showFormModal}
-        handleClose={handleClose}
+        handleClose={handleFormModalClose}
         onInputChange={onInputChange}
         addPost={addNewStarship}
       />
@@ -95,9 +109,18 @@ function App() {
         className={"addButton"}
         size={"lg"}
         variant={"primary"}
-        onClick={handleShow}
+        onClick={handleFormModalShow}
       >
         +
+      </Button>
+      <Button
+        className={!isLogged ? "LogInBtn" : "disabled"}
+        size={"lg"}
+        variant={"primary"}
+        onClick={handleLogModalShow}
+      >
+        {" "}
+        Log in
       </Button>
     </div>
   );

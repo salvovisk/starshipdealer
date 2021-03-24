@@ -11,3 +11,6 @@ export const ADD_STARSHIP_SUCCESS = "ADD_STARSHIP_SUCCESS";
 export const ADD_STARSHIP_ERROR = "ADD_STARSHIP_ERROR";
 
 export const DISCARD_ERROR = "DISCARD_ERROR";
+
+export const LOG_IN = "LOG_IN";
+export const LOG_OUT = "LOG_OUT";

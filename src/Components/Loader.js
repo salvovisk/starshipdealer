@@ -9,7 +9,7 @@ const Loader = () => (
       alignItems: "center",
     }}
   >
-    <Spinner variant="warning"  animation="border" />
+    <Spinner variant="warning" animation="border" />
   </Container>
 );
 

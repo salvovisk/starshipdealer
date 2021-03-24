@@ -1,6 +1,6 @@
 import { Modal, Container, ListGroup } from "react-bootstrap";
 
-export default ({ show, handleClose, starship }) => {
+const SimpleCardDetail = ({ show, handleClose, starship }) => {
   return (
     <>
       <Modal show={show} handleClose={handleClose} centered>
@@ -33,3 +33,5 @@ export default ({ show, handleClose, starship }) => {
     </>
   );
 };
+
+export default SimpleCardDetail;

@@ -1,9 +1,7 @@
 import { Button, Col, Form, Modal } from "react-bootstrap";
 import { useState } from "react";
 
-
-
-export default ({ onInputChange, addPost, show, handleClose }) => {
+const StarshipForm = ({ onInputChange, addPost, show, handleClose }) => {
   const [validate, setValidate] = useState(false);
 
   const checkAndAddPost = async (e) => {
@@ -129,3 +127,5 @@ export default ({ onInputChange, addPost, show, handleClose }) => {
     </Modal>
   );
 };
+
+export default StarshipForm;
