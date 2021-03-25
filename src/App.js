@@ -84,7 +84,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavbarComponent/>
+      <NavbarComponent openLogin={handleLogModalShow} />
       <Header />
       {error && <Message variant="warning" msg={error} />}
       {loading ? (
