@@ -13,10 +13,8 @@ const logUserReducer = (state = defaultState, action) => {
         isLogged: true,
       };
     case LOG_OUT:
-      return {
-        user: undefined,
-        isLogged: false,
-      };
+      return defaultState;
+
     default:
       return state;
   }
