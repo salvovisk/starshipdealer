@@ -6,7 +6,6 @@ import { logIn } from "../Store/actions";
 const LogForm = ({ show, handleClose }) => {
   const dispatch = useDispatch();
 
-
   const form = useRef(null);
 
   async function onSubmit(e) {
@@ -33,7 +32,6 @@ const LogForm = ({ show, handleClose }) => {
               <Col>
                 <Form.Control
                   required
-                  // onChange={onInputChange}
                   name="name"
                   type="text"
                   placeholder="Enter your Name"
@@ -48,7 +46,6 @@ const LogForm = ({ show, handleClose }) => {
               <Col>
                 <Form.Control
                   required
-                  // onChange={onInputChange}
                   type="text"
                   name="surname"
                   placeholder="Enter your surname"
@@ -63,7 +60,6 @@ const LogForm = ({ show, handleClose }) => {
               <Col>
                 <Form.Control
                   required
-                  // onChange={onInputChange}
                   type="email"
                   name="email"
                   placeholder="Enter your email"
