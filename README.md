@@ -5,6 +5,9 @@ It displays a list, in form of cards, of popular and fictional Starships, with d
 
 ![image](https://user-images.githubusercontent.com/76967077/113866230-5bc97d80-97ad-11eb-9297-9f595b52bcc3.png)
 
+![image](https://user-images.githubusercontent.com/76967077/113866408-94695700-97ad-11eb-9241-488915088ec1.png)
+
+
 
 The project aim was to use Redux.
 So the App started with props and useState, then Redux was implemented in the "redux-implementation" branch.
